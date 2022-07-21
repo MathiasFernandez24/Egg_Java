@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class JavaApplication3 {
 
     public static void main(String[] args) {
-        auxiliar();
+        //auxiliar();
         //ejercicio11();
         //ejercicio12();
         //ejercicio13();
@@ -14,8 +14,7 @@ public class JavaApplication3 {
     }
 
     public static void auxiliar() {
-        double a = 5.15123;
-        System.out.println(round(1));
+        
 
     }
 
