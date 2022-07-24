@@ -1,7 +1,7 @@
 package guia.pkg5.java.ejercicios;
 
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.ThreadLocalRandom; //para obtener numeros aleatorios
 
 /**
  * @author Mathias Fernandez (mathias_fernandez_24@hotmail.com)
@@ -28,7 +28,8 @@ public class Guia5JavaEjercicios {
         //ejercicio17();
         //ejercicio18();
         //ejercicio19();
-        ejercicio20(); //incompleto linea 565
+        //ejercicio20();
+        //ejercicio21();
 
     }
 
@@ -533,9 +534,8 @@ public class Guia5JavaEjercicios {
         System.out.println("");
 
         //creo una variable "bandera" en true y corroboro la logica con "for", si es distinto a 15 cambio a false
-        int var1, var2, var3=0, var4;
+        int var1, var2, var3 = 0, var4 = 0, varX = matriz.length - 1;
         boolean bandera = true;
-
         for (int i = 0; i < matriz.length; i++) {
             //var1 y var 2 las reinicio en 0 en cada vuelta
             var1 = 0;
@@ -546,27 +546,105 @@ public class Guia5JavaEjercicios {
             }
             System.out.println("fila " + i + " = " + var1);
             //En este punto en var1 están sumadas cada fila en cada vuelta, descomentar la linea anterior para corroborar
-            if(var1!=15){
+            if (var1 != 15) {
                 bandera = false;
             }
-            
+
             for (int j = 0; j < matriz.length; j++) {
                 var2 += matriz[j][i];
             }
             System.out.println("columna " + i + " = " + var2);
             //En este punto en var1 están sumadas cada columna en cada vuelta, descomentar la linea anterior para corroborar
-            if(var2!=15){
+            if (var2 != 15) {
                 bandera = false;
             }
-            //En var3 almaceno la diagonal de derecha a izquierda
-            var3+= matriz[i][i];
-            System.out.println("diagonal principal :" + var3);
-            
-            //En este for
-            for (int j = matriz.length-1; j >= 0; j--) {
-                System.out.println("asdassd" + j);
-            }
+            //En var3 almaceno la diagonal de izquierda a derecha
+            var3 += matriz[i][i];
+            //System.out.println("diagonal principal :" + var3);
+
+            //En var4 almaceno la diagonal de izquierda a derecha, varX se usa como contador
+            var4 += matriz[varX][i];
+            varX--;
+
+        }
+        System.out.println("Diagonal 1 : " + var3 + "\nDiagonal 2 : " + var4 + "\n");
+        if (var3 != 15 || var4 != 15) {
+            bandera = false;
+        }
+        if (bandera) {
+            System.out.println("Es un cuadro magico");
+        } else {
+            System.out.println("ERROR, No es un cuadro magico");
         }
     }
 
+    public static void ejercicio21() {
+        /*Dadas dos matrices cuadradas de números enteros, la matriz M de 10x10 y la matriz P de
+        3x3, se solicita escribir un programa en el cual se compruebe si la matriz P está contenida
+        dentro de la matriz M. Para ello se debe verificar si entre todas las submatrices de 3x3 que
+        se pueden formar en la matriz M, desplazándose por filas o columnas, existe al menos una
+        que coincida con la matriz P. En ese caso, el programa debe indicar la fila y la columna de
+        la matriz M en la cual empieza el primer elemento de la submatriz P.
+        Ejemplo:
+
+        Como podemos observar nuestra submatriz P se encuentra en la matriz M en los índices:
+        4,4 - 4,5 - 4,6 - 5,4 - 5,5 - 5,6 - 6,4 - 6,5 - 6,6.*/
+
+        Scanner leer = new Scanner(System.in);
+
+        int matrizM[][] = new int[10][10];
+        int matrizP[][] = new int[3][3];
+
+        // Este For rellena la matrizM con numero aleatorios entre 10 y 99
+        System.out.println("MUESTRA MATRIZ MAYOR: \n");
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                matrizM[i][j] = ThreadLocalRandom.current().nextInt(10, 100);
+                System.out.print(matrizM[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        //Este For rellena manualmente la matrizP con 9 numeros
+        System.out.println("\nIngrese 9 numeros\nde Matriz Menor :");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrizP[i][j] = leer.nextInt();
+            }
+        }
+        //muestra MatrizP
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matrizP[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        //creamos un marcador "bandera" para que cambie en caso que no coincidan todos los elementos
+        boolean bandera = true, bandera2 = false;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                //el condicional if es el primer filtro, en caso que concida toda la primerfila,c ontinua a validar los demas datos
+                if (matrizM[i][j] == matrizP[0][0] && matrizM[i][j + 1] == matrizP[0][1] && matrizM[i][j + 2] == matrizP[0][2]) {
+                    bandera2 = true;
+                    System.out.println("\nPrimera fila encontrada en coordenada: " + i + " - " + j);
+                    //estos "for" anidados, validan las proximas 6 posiciones 
+                    //(filas 1 y 2 completas), la fila 1 ya fue validada en el if anterior
+                    for (int k = 1; k < 3; k++) {
+                        for (int l = 0; l < 3; l++) {
+                            if (matrizM[i + k][j + l] == matrizP[k][l]) {
+                                System.out.println("Coincide posicion :" + k + " - " + l);
+                            } else {
+                                bandera = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //mensaje final, muestra se encontró o no la matrizP dentro de matrizM
+        if (bandera && bandera2) {
+            System.out.println("\nSE HA ENCONTRADO LA MATRIZ!!!!");
+        } else {
+            System.out.println("\nERROR, la matriz no fué encontrada");
+        }
+    }
 }
