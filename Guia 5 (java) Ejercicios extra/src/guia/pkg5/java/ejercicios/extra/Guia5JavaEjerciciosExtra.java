@@ -31,7 +31,8 @@ public class Guia5JavaEjerciciosExtra {
         //ejercicio20();
         //ejercicio21();
         //ejercicio22();
-        ejercicio23(); //incompleto
+        //ejercicio23();
+        //ejercicio24();
 
         //aux();
     }
@@ -693,10 +694,11 @@ public class Guia5JavaEjerciciosExtra {
         int vectorRandom[] = new int[5];
         boolean aux = false;
 
+        //le asigno un valor diferente a 0, a todo vectorRandom, en este caso 99, pero no significa nada
         for (int i = 0; i < 5; i++) {
             vectorRandom[i] = 99;
         }
-
+        //almaceno las 5 palabras ingresadas, validando que tengan entre 3 y 5 caracteres, las almaceno en un vector
         for (int i = 0; i < 5; i++) {
             do {
                 System.out.print("Ingrese palabra " + (i + 1) + ": ");
@@ -709,18 +711,21 @@ public class Guia5JavaEjerciciosExtra {
                 }
             } while (aux);
         }
+        //asigna valor standar a toda la sopa "-"
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
-                sopa[i][j] = "z";
+                sopa[i][j] = "-";
             }
         }
-
+        //imprime la sopa
+        System.out.println("\n    SOPA VACIA\n");
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 System.out.print(sopa[i][j] + " ");
             }
             System.out.println("");
         }
+
         int aux2 = 0, randomFila, randomColumna;
         boolean existeRandom;
         for (int i = 0; i < 5; i++) {
@@ -735,12 +740,14 @@ public class Guia5JavaEjerciciosExtra {
                     aux2 = 5;
 
             }
-            randomColumna = ThreadLocalRandom.current().nextInt(0, 20 - aux2);
-
+            //genera una posicion entre 0 y 20, pero le resto el largo de la palabra, porque si tocase 20, podria no caber en la sopa
+            randomColumna = ThreadLocalRandom.current().nextInt(0, 21 - aux2);
+            //en este do, se verifica que no toquen 2 veces la misma fila para las palabras, si la fila se
+            //repite por casualidad, no la almacena y vuelve a generar otro numero random
             do {
                 existeRandom = false;
                 randomFila = ThreadLocalRandom.current().nextInt(0, (20));
-                System.out.println(randomFila);
+                //System.out.println(randomFila);
                 for (int j = 0; j < 5; j++) {
 
                     if (vectorRandom[j] == randomFila) {
@@ -750,12 +757,53 @@ public class Guia5JavaEjerciciosExtra {
             } while (existeRandom);
             vectorRandom[i] = randomFila;
 
-            
-            for (int j = 0; j < 10; j++) {
-               //CONTINUAR 
+            for (int j = 0; j < palabras[i].length(); j++) {
+                sopa[randomFila][randomColumna + j] = palabras[i].substring(j, j + 1);
             }
-            
+
+        }
+        //imprime la sopa
+        System.out.println("\n\n  Sopa (resultados)\n");
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+
+                System.out.print(sopa[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        //imprime la sopa
+        System.out.println("\n\n    Sopa Final\n");
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (sopa[i][j] == "-") {
+                    sopa[i][j] = String.valueOf(ThreadLocalRandom.current().nextInt(1, 10));
+                }
+                System.out.print(sopa[i][j] + " ");
+            }
+            System.out.println("");
         }
 
+    }
+
+    public static void ejercicio24() {
+        Scanner leer = new Scanner(System.in);
+        System.out.print("Ingrese un numero: ");
+        int cantNum = leer.nextInt();
+        //uso long, porque a partir de la posicion 47 del array "num" los numeros son demasiado largos para ser "int" y genera numeros negativos
+        long num[] = new long[cantNum];
+        
+        //para la posicion 0 y 1 del vector "num" el valor es 1, para las demas posiciones se suma la posicion anterior y la ante-anterior
+        for (int i = 0; i < cantNum; i++) {
+            if (i > 1) {
+                num[i] = num[i - 1] + num[i - 2];
+            } else {
+                num[i] = 1;
+            }
+        }
+        //imprimer el resultado del vector "num
+        System.out.println("\nPrimeros " + cantNum + " numeros de\nSecuencia de Fibonaccin: ");
+        for (int i = 0; i < cantNum; i++) {
+            System.out.println(num[i] + ", ");
+        }
     }
 }
