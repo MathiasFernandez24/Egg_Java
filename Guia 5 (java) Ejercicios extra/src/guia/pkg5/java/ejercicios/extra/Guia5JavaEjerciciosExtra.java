@@ -34,19 +34,20 @@ public class Guia5JavaEjerciciosExtra {
         //ejercicio23();
         //ejercicio24();
 
-        //aux();
+        aux();
     }
 
     public static void aux() {
         Scanner leer = new Scanner(System.in);
-        int num1 = 2;
-        int num2 = 2;
+        int num1 = leer.nextInt();
+        int num2 = leer.nextInt();
+        String var1 = leer.next();
+        
 
-        do {
-            System.out.println("Ingrese un numero: ");
-            num2 = leer.nextInt();
-        } while (num1 != num2);
-
+        System.out.println(var1);
+        System.out.println(num1);
+        System.out.println(num2);
+        System.out.printf("%s%d%s%d",var1,num1,"------", num1);
     }
 
     public static void ejercicio1() {
@@ -791,7 +792,7 @@ public class Guia5JavaEjerciciosExtra {
         int cantNum = leer.nextInt();
         //uso long, porque a partir de la posicion 47 del array "num" los numeros son demasiado largos para ser "int" y genera numeros negativos
         long num[] = new long[cantNum];
-        
+
         //para la posicion 0 y 1 del vector "num" el valor es 1, para las demas posiciones se suma la posicion anterior y la ante-anterior
         for (int i = 0; i < cantNum; i++) {
             if (i > 1) {
