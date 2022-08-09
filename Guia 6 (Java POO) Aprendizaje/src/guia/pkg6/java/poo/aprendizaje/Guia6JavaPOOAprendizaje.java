@@ -1,24 +1,35 @@
 package guia.pkg6.java.poo.aprendizaje;
 
+import guia.pkg6.java.poo.aprendizaje.entidades.Arreglos;
+import guia.pkg6.java.poo.aprendizaje.entidades.Cadena;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cafetera;
 import guia.pkg6.java.poo.aprendizaje.entidades.Circunferencia;
 import guia.pkg6.java.poo.aprendizaje.entidades.CuentaBancaria;
 import guia.pkg6.java.poo.aprendizaje.entidades.Libro;
 import guia.pkg6.java.poo.aprendizaje.entidades.Mascota;
+import guia.pkg6.java.poo.aprendizaje.entidades.Matematica;
 import guia.pkg6.java.poo.aprendizaje.entidades.Operacion;
 import guia.pkg6.java.poo.aprendizaje.entidades.Persona;
+import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj12;
 import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj7;
 import guia.pkg6.java.poo.aprendizaje.entidades.Rectangulo;
+import guia.pkg6.java.poo.aprendizaje.servicios.ArreglosService;
+import guia.pkg6.java.poo.aprendizaje.servicios.CadenaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CafeteraService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CircunferenciaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CuentaBancariaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.LibroService;
+import guia.pkg6.java.poo.aprendizaje.servicios.MatematicaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.OperacionService;
+import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj12Service;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj7Service;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.RectanguloService;
 import guia.pkg6.java.poo.aprendizaje.servicios.ServicioMascota;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -27,6 +38,7 @@ import java.util.Scanner;
 public class Guia6JavaPOOAprendizaje {
 
     public static void main(String[] args) {
+
         //ejemploVideo();
         //ejercicioPersona();
         //ejercicio1();
@@ -35,7 +47,12 @@ public class Guia6JavaPOOAprendizaje {
         //ejercicio4();
         //ejercicio5();
         //ejercicio6();
-        ejercicio7();
+        //ejercicio7();
+        //ejercicio8();
+        //ejercicio9();
+        //ejercicio10();
+        //ejercicio11();
+        ejercicio12();
 
     }
 
@@ -223,6 +240,72 @@ public class Guia6JavaPOOAprendizaje {
         System.out.println("con hambruna: " + varHambre);
         System.out.println("Mayores de edad: " + (mayores * 100 / 7) + "%");
         System.out.println("Menores de edad: " + (menores * 100 / 7) + "%");
+    }
 
+    public static void ejercicio8() {
+        CadenaService sv = new CadenaService();
+        Cadena frase1 = sv.crearFrase();
+
+        System.out.println(frase1);
+
+        sv.mostrarVocales(frase1);
+        sv.invertirFrase(frase1);
+        sv.vecesRepetido(frase1);
+        sv.compararLongitud(frase1);
+        sv.unirFrases(frase1);
+        sv.reemplazar(frase1);
+
+        System.out.println(sv.contiene(frase1));
+
+        System.out.println("-----" + frase1);
+
+    }
+
+    public static void ejercicio9() {
+
+        MatematicaService sv = new MatematicaService();
+        Matematica variable = sv.crearMatematica();
+
+        System.out.println(variable);
+        System.out.println(sv.devolverMayor(variable));
+        System.out.println(sv.calcularPotencia(variable));
+        System.out.println(sv.calculaRaiz(variable));
+    }
+
+    public static void ejercicio10() {
+        ArreglosService as = new ArreglosService();
+        Arreglos a = as.crearArreglos();
+
+        as.rellenarArreglo(a.getArrayA());
+        as.ordenarArreglo(a.getArrayA());
+        as.rellenarArregloB(a.getArrayA(), a.getArrayB(), a.getArrayB().length);
+    }
+
+    public static void ejercicio11() {
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+
+        System.out.print("año: ");
+        int anio = leer.nextInt()-1900;
+        System.out.print("mes: ");
+        int mes = leer.nextInt();
+        System.out.print("dia: ");
+        int dia = leer.nextInt();
+
+        Date fecha = new Date(anio, mes, dia);
+        Date fechaActual = new Date();
+        System.out.println(fechaActual);
+
+        System.out.println("Diferencia, años: " + (fechaActual.getYear() - fecha.getYear()));
+        System.out.println("Diferencia, dias: " + (fechaActual.getDay()- fecha.getDay()));
+        System.out.println("Diferencia, meses: " + (fechaActual.getMonth() - fecha.getMonth()));
+        System.out.println(fechaActual.getDay());
+        System.out.println(fecha.getDay());
+    }
+    
+    public static void ejercicio12(){
+        PersonaEj12Service sv = new PersonaEj12Service();
+        PersonaEj12 maira = sv.crearPersona();
+        System.out.println(maira);
+        sv.mostrarEdad(maira);
     }
 }

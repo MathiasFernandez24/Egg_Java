@@ -2,7 +2,7 @@ package guia.pkg6.java.poo.aprendizaje.entidades;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Mathias Fernandez <mathias_fernandez_24@hotmail.com>
  */
 public class PersonaEj7 {
 
