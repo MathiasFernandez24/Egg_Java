@@ -3,27 +3,35 @@ package guia.pkg6.java.poo.aprendizaje;
 import guia.pkg6.java.poo.aprendizaje.entidades.Arreglos;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cadena;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cafetera;
+import guia.pkg6.java.poo.aprendizaje.entidades.Cancion;
 import guia.pkg6.java.poo.aprendizaje.entidades.Circunferencia;
 import guia.pkg6.java.poo.aprendizaje.entidades.CuentaBancaria;
 import guia.pkg6.java.poo.aprendizaje.entidades.Libro;
 import guia.pkg6.java.poo.aprendizaje.entidades.Mascota;
 import guia.pkg6.java.poo.aprendizaje.entidades.Matematica;
+import guia.pkg6.java.poo.aprendizaje.entidades.NIF;
 import guia.pkg6.java.poo.aprendizaje.entidades.Operacion;
 import guia.pkg6.java.poo.aprendizaje.entidades.Persona;
 import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj12;
 import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj7;
+import guia.pkg6.java.poo.aprendizaje.entidades.Puntos;
+import guia.pkg6.java.poo.aprendizaje.entidades.Raices;
 import guia.pkg6.java.poo.aprendizaje.entidades.Rectangulo;
 import guia.pkg6.java.poo.aprendizaje.servicios.ArreglosService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CadenaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CafeteraService;
+import guia.pkg6.java.poo.aprendizaje.servicios.CancionService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CircunferenciaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CuentaBancariaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.LibroService;
 import guia.pkg6.java.poo.aprendizaje.servicios.MatematicaService;
+import guia.pkg6.java.poo.aprendizaje.servicios.NIFService;
 import guia.pkg6.java.poo.aprendizaje.servicios.OperacionService;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj12Service;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj7Service;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaService;
+import guia.pkg6.java.poo.aprendizaje.servicios.PuntosService;
+import guia.pkg6.java.poo.aprendizaje.servicios.RaicesService;
 import guia.pkg6.java.poo.aprendizaje.servicios.RectanguloService;
 import guia.pkg6.java.poo.aprendizaje.servicios.ServicioMascota;
 import java.util.Arrays;
@@ -52,8 +60,12 @@ public class Guia6JavaPOOAprendizaje {
         //ejercicio9();
         //ejercicio10();
         //ejercicio11();
-        ejercicio12();
-
+        //ejercicio12();
+        //EJERCICIOS EXTRA
+        //ejercicioExtra1();
+        //ejercicioExtra2();
+        //ejercicioExtra3();
+        ejercicioExtra4();
     }
 
     public static void ejemploVideo() {
@@ -285,7 +297,7 @@ public class Guia6JavaPOOAprendizaje {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
         System.out.print("año: ");
-        int anio = leer.nextInt()-1900;
+        int anio = leer.nextInt() - 1900;
         System.out.print("mes: ");
         int mes = leer.nextInt();
         System.out.print("dia: ");
@@ -296,16 +308,54 @@ public class Guia6JavaPOOAprendizaje {
         System.out.println(fechaActual);
 
         System.out.println("Diferencia, años: " + (fechaActual.getYear() - fecha.getYear()));
-        System.out.println("Diferencia, dias: " + (fechaActual.getDay()- fecha.getDay()));
+        System.out.println("Diferencia, dias: " + (fechaActual.getDay() - fecha.getDay()));
         System.out.println("Diferencia, meses: " + (fechaActual.getMonth() - fecha.getMonth()));
         System.out.println(fechaActual.getDay());
         System.out.println(fecha.getDay());
     }
-    
-    public static void ejercicio12(){
+
+    public static void ejercicio12() {
         PersonaEj12Service sv = new PersonaEj12Service();
         PersonaEj12 maira = sv.crearPersona();
         System.out.println(maira);
         sv.mostrarEdad(maira);
     }
+
+    public static void ejercicioExtra1() {
+        CancionService sv = new CancionService();
+        Cancion c1 = sv.crearCancion();
+        Cancion c2 = sv.crearCancionCompleta();
+
+        System.out.println(c1);
+        System.out.println(c2);
+    }
+
+    public static void ejercicioExtra2() {
+        PuntosService sv = new PuntosService();
+        Puntos puntito = sv.crearPuntos();
+
+        System.out.println(puntito);
+        System.out.println(sv.calcularDistancias(puntito));
+        System.out.println(Math.sqrt(37));
+    }
+
+    public static void ejercicioExtra3() {
+        RaicesService sv = new RaicesService();
+        Raices raiz1 = sv.crearRaices();
+
+        System.out.println(raiz1);
+        System.out.println(sv.getDiscriminante(raiz1));
+        System.out.println(sv.tieneRaices(raiz1));
+        sv.obtenerRaices(raiz1);
+        sv.obtenerRaiz(raiz1);
+        sv.calcular(raiz1);
+    }
+
+    public static void ejercicioExtra4() {
+        NIFService sv = new NIFService();
+        NIF dni = sv.crearNif();
+        System.out.println(dni);
+        sv.mostrar(dni);
+    }
+
 }
