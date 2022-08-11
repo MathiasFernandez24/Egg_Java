@@ -1,5 +1,6 @@
 package guia.pkg6.java.poo.aprendizaje;
 
+import guia.pkg6.java.poo.aprendizaje.entidades.Ahoracado;
 import guia.pkg6.java.poo.aprendizaje.entidades.Arreglos;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cadena;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cafetera;
@@ -9,6 +10,8 @@ import guia.pkg6.java.poo.aprendizaje.entidades.CuentaBancaria;
 import guia.pkg6.java.poo.aprendizaje.entidades.Libro;
 import guia.pkg6.java.poo.aprendizaje.entidades.Mascota;
 import guia.pkg6.java.poo.aprendizaje.entidades.Matematica;
+import guia.pkg6.java.poo.aprendizaje.entidades.MyArray;
+import guia.pkg6.java.poo.aprendizaje.entidades.MyFraccion;
 import guia.pkg6.java.poo.aprendizaje.entidades.NIF;
 import guia.pkg6.java.poo.aprendizaje.entidades.Operacion;
 import guia.pkg6.java.poo.aprendizaje.entidades.Persona;
@@ -17,6 +20,7 @@ import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj7;
 import guia.pkg6.java.poo.aprendizaje.entidades.Puntos;
 import guia.pkg6.java.poo.aprendizaje.entidades.Raices;
 import guia.pkg6.java.poo.aprendizaje.entidades.Rectangulo;
+import guia.pkg6.java.poo.aprendizaje.servicios.AhoracadoService;
 import guia.pkg6.java.poo.aprendizaje.servicios.ArreglosService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CadenaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CafeteraService;
@@ -25,6 +29,8 @@ import guia.pkg6.java.poo.aprendizaje.servicios.CircunferenciaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CuentaBancariaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.LibroService;
 import guia.pkg6.java.poo.aprendizaje.servicios.MatematicaService;
+import guia.pkg6.java.poo.aprendizaje.servicios.MyArrayService;
+import guia.pkg6.java.poo.aprendizaje.servicios.MyFraccionService;
 import guia.pkg6.java.poo.aprendizaje.servicios.NIFService;
 import guia.pkg6.java.poo.aprendizaje.servicios.OperacionService;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj12Service;
@@ -65,7 +71,10 @@ public class Guia6JavaPOOAprendizaje {
         //ejercicioExtra1();
         //ejercicioExtra2();
         //ejercicioExtra3();
-        ejercicioExtra4();
+        //ejercicioExtra4();
+        //ejercicioExtra5();
+        //ejercicioExtra6();
+        ejercicioAdicional1();
     }
 
     public static void ejemploVideo() {
@@ -358,4 +367,31 @@ public class Guia6JavaPOOAprendizaje {
         sv.mostrar(dni);
     }
 
+    public static void ejercicioExtra5() {
+        MyArrayService sv = new MyArrayService();
+        MyArray meses = sv.crearMes();
+        System.out.println(meses);
+        sv.adivinarMes(meses);
+    }
+
+    public static void ejercicioExtra6() {
+        AhoracadoService sv = new AhoracadoService();
+        Ahoracado juego = sv.crearJuego();
+
+        System.out.println(juego);
+        sv.longitud(juego);
+        sv.buscar(juego);
+    }
+
+    public static void ejercicioAdicional1() {
+
+        MyFraccionService sv = new MyFraccionService();
+        MyFraccion fraccion1 = sv.crearFraccion();
+        MyFraccion fraccion2 = sv.crearFraccion();
+
+        /*esta funcion llama a todas las funciones, y las muestra, pero se
+        pueden llamar individualmente desde el service (sv.), todas retornan el 
+        resultado de la cuenta en un dato de tipo MyFraccion*/
+        sv.sumaRestaMultiplicaciónDivision(fraccion1, fraccion2);
+    }
 }

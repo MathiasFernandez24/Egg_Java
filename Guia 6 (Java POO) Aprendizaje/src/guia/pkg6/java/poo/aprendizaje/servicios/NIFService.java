@@ -4,8 +4,8 @@ import guia.pkg6.java.poo.aprendizaje.entidades.NIF;
 import java.util.Scanner;
 
 /**
- * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ *
+ * @author Mathias Fernandez <mathias_fernandez_24@hotmail.com>
  */
 public class NIFService {
     public NIF crearNif(){
