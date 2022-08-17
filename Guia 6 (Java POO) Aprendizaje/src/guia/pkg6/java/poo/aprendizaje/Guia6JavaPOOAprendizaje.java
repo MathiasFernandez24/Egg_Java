@@ -7,6 +7,7 @@ import guia.pkg6.java.poo.aprendizaje.entidades.Cafetera;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cancion;
 import guia.pkg6.java.poo.aprendizaje.entidades.Circunferencia;
 import guia.pkg6.java.poo.aprendizaje.entidades.CuentaBancaria;
+import guia.pkg6.java.poo.aprendizaje.entidades.Fecha;
 import guia.pkg6.java.poo.aprendizaje.entidades.Libro;
 import guia.pkg6.java.poo.aprendizaje.entidades.Mascota;
 import guia.pkg6.java.poo.aprendizaje.entidades.Matematica;
@@ -14,12 +15,16 @@ import guia.pkg6.java.poo.aprendizaje.entidades.MyArray;
 import guia.pkg6.java.poo.aprendizaje.entidades.MyFraccion;
 import guia.pkg6.java.poo.aprendizaje.entidades.NIF;
 import guia.pkg6.java.poo.aprendizaje.entidades.Operacion;
+import guia.pkg6.java.poo.aprendizaje.entidades.Pass;
 import guia.pkg6.java.poo.aprendizaje.entidades.Persona;
 import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj12;
 import guia.pkg6.java.poo.aprendizaje.entidades.PersonaEj7;
 import guia.pkg6.java.poo.aprendizaje.entidades.Puntos;
 import guia.pkg6.java.poo.aprendizaje.entidades.Raices;
 import guia.pkg6.java.poo.aprendizaje.entidades.Rectangulo;
+import guia.pkg6.java.poo.aprendizaje.entidades.SopaDeLetras;
+import guia.pkg6.java.poo.aprendizaje.entidades.Tiempo;
+import guia.pkg6.java.poo.aprendizaje.entidades.Triangulo;
 import guia.pkg6.java.poo.aprendizaje.servicios.AhoracadoService;
 import guia.pkg6.java.poo.aprendizaje.servicios.ArreglosService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CadenaService;
@@ -27,12 +32,14 @@ import guia.pkg6.java.poo.aprendizaje.servicios.CafeteraService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CancionService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CircunferenciaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CuentaBancariaService;
+import guia.pkg6.java.poo.aprendizaje.servicios.FechaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.LibroService;
 import guia.pkg6.java.poo.aprendizaje.servicios.MatematicaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.MyArrayService;
 import guia.pkg6.java.poo.aprendizaje.servicios.MyFraccionService;
 import guia.pkg6.java.poo.aprendizaje.servicios.NIFService;
 import guia.pkg6.java.poo.aprendizaje.servicios.OperacionService;
+import guia.pkg6.java.poo.aprendizaje.servicios.PassService;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj12Service;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaEj7Service;
 import guia.pkg6.java.poo.aprendizaje.servicios.PersonaService;
@@ -40,6 +47,10 @@ import guia.pkg6.java.poo.aprendizaje.servicios.PuntosService;
 import guia.pkg6.java.poo.aprendizaje.servicios.RaicesService;
 import guia.pkg6.java.poo.aprendizaje.servicios.RectanguloService;
 import guia.pkg6.java.poo.aprendizaje.servicios.ServicioMascota;
+import guia.pkg6.java.poo.aprendizaje.servicios.SopaDeLetrasService;
+import guia.pkg6.java.poo.aprendizaje.servicios.TiempoService;
+import guia.pkg6.java.poo.aprendizaje.servicios.TrianguloService;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
@@ -51,7 +62,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Guia6JavaPOOAprendizaje {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //ejemploVideo();
         //ejercicioPersona();
@@ -74,7 +85,12 @@ public class Guia6JavaPOOAprendizaje {
         //ejercicioExtra4();
         //ejercicioExtra5();
         //ejercicioExtra6();
-        ejercicioAdicional1();
+        //ejercicioAdicional1();
+        //ejercicioAdicional2();
+        //ejercicioAdicional3();
+        //ejercicioAdicional4B();
+        //ejercicioAdicional5();
+        ejercicioAdicional6();
     }
 
     public static void ejemploVideo() {
@@ -394,4 +410,70 @@ public class Guia6JavaPOOAprendizaje {
         resultado de la cuenta en un dato de tipo MyFraccion*/
         sv.sumaRestaMultiplicaciónDivision(fraccion1, fraccion2);
     }
+
+    public static void ejercicioAdicional2() throws InterruptedException {
+        TiempoService ts = new TiempoService();
+        Tiempo t1 = ts.crearTiempo();
+
+        System.out.println(t1);
+        ts.ajustarHora(t1);
+        System.out.println(t1);
+        ts.mostrarHora(t1);
+
+    }
+
+    private static void ejercicioAdicional3() {
+        PassService ps = new PassService();
+        Pass p1 = new Pass("", "Mathias", 37123456);
+        ps.menu(p1);
+
+    }
+
+    public static void ejercicioAdicional4B() {
+        FechaService sv = new FechaService();
+        Fecha fecha = sv.crearFecha();
+
+        sv.mesElegido(fecha);
+        sv.diaAntPos(fecha);
+        if (sv.bisiesto(fecha)) {
+            System.out.println("El año es bisiesto");
+        } else {
+            System.out.println("El año no es bisiesto");
+        }
+        sv.test(fecha);
+    }
+
+    public static void ejercicioAdicional5() {
+        TrianguloService sv = new TrianguloService();
+        Triangulo t1 = sv.crearTriagnulo();
+        Triangulo t2 = sv.crearTriagnulo();
+        Triangulo t3 = sv.crearTriagnulo();
+        Triangulo t4 = sv.crearTriagnulo();
+        System.out.println(t1);
+        System.out.println(t2);
+        System.out.println(t3);
+        System.out.println(t4);
+
+        Triangulo vector[] = {t1, t2, t3, t4};
+        sv.mayorSuperficie(vector);
+    }
+
+    public static void ejercicioAdicional6() {
+        SopaDeLetrasService sv = new SopaDeLetrasService();
+        SopaDeLetras sopa1 = sv.crearSopa();
+
+        sv.mostrar(sopa1);
+        sv.llenar(sopa1);
+
+        System.out.println("\n----------------------\n");
+
+        sv.mostrar(sopa1);
+        sv.buscar(sopa1);
+
+        sv.reemplazar(sopa1);
+        sv.mostrar(sopa1);
+        sv.mostrarInvertido(sopa1);
+    }
+    
+    
 }
