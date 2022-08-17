@@ -2,6 +2,7 @@ package guia.pkg6.java.poo.aprendizaje;
 
 import guia.pkg6.java.poo.aprendizaje.entidades.Ahoracado;
 import guia.pkg6.java.poo.aprendizaje.entidades.Arreglos;
+import guia.pkg6.java.poo.aprendizaje.entidades.Auto;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cadena;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cafetera;
 import guia.pkg6.java.poo.aprendizaje.entidades.Cancion;
@@ -27,6 +28,7 @@ import guia.pkg6.java.poo.aprendizaje.entidades.Tiempo;
 import guia.pkg6.java.poo.aprendizaje.entidades.Triangulo;
 import guia.pkg6.java.poo.aprendizaje.servicios.AhoracadoService;
 import guia.pkg6.java.poo.aprendizaje.servicios.ArreglosService;
+import guia.pkg6.java.poo.aprendizaje.servicios.AutoService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CadenaService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CafeteraService;
 import guia.pkg6.java.poo.aprendizaje.servicios.CancionService;
@@ -90,7 +92,8 @@ public class Guia6JavaPOOAprendizaje {
         //ejercicioAdicional3();
         //ejercicioAdicional4B();
         //ejercicioAdicional5();
-        ejercicioAdicional6();
+        //ejercicioAdicional6();
+        ejercicioAdicional7();
     }
 
     public static void ejemploVideo() {
@@ -474,6 +477,20 @@ public class Guia6JavaPOOAprendizaje {
         sv.mostrar(sopa1);
         sv.mostrarInvertido(sopa1);
     }
-    
-    
+
+    public static void ejercicioAdicional7() {
+        AutoService sv = new AutoService();
+        Auto vehiculo1 = sv.crearAuto();
+        System.out.println("\n" + vehiculo1 + "\n");
+
+        sv.cambioTitularidad(vehiculo1);
+        System.out.println("\n" + vehiculo1 + "\n");
+
+        sv.recorrerDistancia(vehiculo1);
+        System.out.println("\n" + vehiculo1 + "\n");
+
+        sv.service(vehiculo1);
+        System.out.println("\n" + vehiculo1 + "\n");
+
+    }
 }
